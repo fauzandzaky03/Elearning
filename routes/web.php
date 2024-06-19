@@ -30,12 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Route untuk menampilkan halaman student
-Route::get('/admin/student', [StudentController::class, 'index']);
+Route::get('/admin/student', [StudentController::class, 'index'])->middleware('admin');
 // untuk create
-Route::get('/admin/student/create', [StudentController::class, 'create']);
+Route::get('/admin/student/create', [StudentController::class, 'create'])->middleware('admin');
 
 // untuk simpan
-Route::post('/admin/student/store', [StudentController::class, 'store']);
+Route::post('/admin/student/store', [StudentController::class, 'store'])->middleware('admin');
 
 // untuk menampilkan edit
 Route::get('/admin/student/edit/{id}', [StudentController::class, 'edit']);
